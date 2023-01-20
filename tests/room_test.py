@@ -69,5 +69,3 @@ class TestRoom(unittest.TestCase):
             "Sorry, this room is full.", self.room.add_guest_to_room("RedRoom", "Toni")
         )
 
-    # def test_charge_guest(self):
-    #     self.assertEqual(20, self.room.add_guest_to_room("RedRoom", "Lily"))

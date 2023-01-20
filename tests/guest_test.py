@@ -1,6 +1,7 @@
 import unittest
 from classes.guest import Guest
 from classes.room import Room
+from classes.bar import Bar
 
 
 class TestGuest(unittest.TestCase):
@@ -11,6 +12,9 @@ class TestGuest(unittest.TestCase):
                 "RedRoom": {"guests": [], "capacity": 4, "songs": [], "fee": 5},
                 "BlueRoom": {"guests": [], "capacity": 5, "songs": [], "fee": 5},
             }
+        )
+        self.bar = Bar(
+            500, {"Soda": {"price": 2.50}, "Beer": {"price": 4}, "Wine": {"price": 4}}
         )
 
     def test_add_guest(self):
@@ -30,5 +34,9 @@ class TestGuest(unittest.TestCase):
         self.room.add_guest_to_room("RedRoom", "Ellen")
         self.room.add_song_to_room("RedRoom", self.guest.fav_song)
         self.assertEqual(
-            "Ellen says Woohoo!", self.guest.guest_fav_song("Ellen", self.room.rooms["RedRoom"])
+            "Ellen says Woohoo!",
+            self.guest.guest_fav_song("Ellen", self.room.rooms["RedRoom"]),
         )
+
+    def test_buy_a_drink(self):
+        self.assertEqual(11, self.guest.buy_a_drink(self.bar.drinks["Wine"]))

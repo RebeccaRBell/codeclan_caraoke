@@ -22,4 +22,8 @@ class Guest:
 
     def guest_fav_song(self, guest, room):
         if self.fav_song in room["songs"]:
-            return f"{guest} says Woohoo!" 
+            return f"{guest} says Woohoo!"
+
+    def buy_a_drink(self, drink):
+        self.wallet -= drink["price"]
+        return self.wallet
